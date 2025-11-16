@@ -10,13 +10,21 @@ const app = express();
 app.use((req, res) => {
   try {
     const filePath = path.join(__dirname, "files", req.path);
-    if (fs.existsSync(filePath)) return res.sendFile(filePath);
+    return res.sendFile(filePath);
   } catch (err) {
     res.json({ message: err.message });
   }
 });
 
-const PORT = 5173;
+// app.get("/check", (req, res) => {
+//   try {
+//     res.json({ message: "fine!" });
+//   } catch (err) {
+//     res.json({ message: err.message });
+//   }
+// });
+
+const PORT = 45490;
 
 app.listen(PORT, () => {
   console.log("Server listen at port: ", PORT);
